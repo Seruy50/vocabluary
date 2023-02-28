@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/vocabluary/static/css/main.63a9f243.css",
+    "main.js": "/vocabluary/static/js/main.de9ce2b8.js",
+    "static/js/787.15dfc6d7.chunk.js": "/vocabluary/static/js/787.15dfc6d7.chunk.js",
+    "index.html": "/vocabluary/index.html",
+    "main.63a9f243.css.map": "/vocabluary/static/css/main.63a9f243.css.map",
+    "main.de9ce2b8.js.map": "/vocabluary/static/js/main.de9ce2b8.js.map",
+    "787.15dfc6d7.chunk.js.map": "/vocabluary/static/js/787.15dfc6d7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.63a9f243.css",
+    "static/js/main.de9ce2b8.js"
+  ]
+}
