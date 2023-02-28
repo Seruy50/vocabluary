@@ -1,6 +1,6 @@
 import {React, useState} from 'react'
 import styles from './styles.css'
-
+//when - 28/02/2023/19/14
 export default function App(){
   const [value, setValue] = useState('');
   const [wordsArray, setWordsArray] = useState([]); 

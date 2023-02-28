@@ -1,0 +1,22 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.inputsArea {
+    margin: 0 auto;
+}
+
+.inputsArea input {
+    font-size: 18px;
+}
+
+.inputsArea button {
+    font-size: 18px;
+}
+
+.words {
+    margin: 0 auto;
+    font-size: 18px;
+}
