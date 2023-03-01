@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/vocabluary/static/css/main.a245008c.css",
+    "main.css": "/vocabluary/static/css/main.97468f71.css",
     "main.js": "/vocabluary/static/js/main.7c651724.js",
     "static/js/787.15dfc6d7.chunk.js": "/vocabluary/static/js/787.15dfc6d7.chunk.js",
     "static/media/aboreto-all-400-normal.woff": "/vocabluary/static/media/aboreto-all-400-normal.b3bb037600b435561813.woff",
     "static/media/aboreto-latin-400-normal.woff2": "/vocabluary/static/media/aboreto-latin-400-normal.10eabb6159fdaccc5462.woff2",
     "static/media/aboreto-latin-ext-400-normal.woff2": "/vocabluary/static/media/aboreto-latin-ext-400-normal.3e940764a0e3b1af39d3.woff2",
     "index.html": "/vocabluary/index.html",
-    "main.a245008c.css.map": "/vocabluary/static/css/main.a245008c.css.map",
+    "main.97468f71.css.map": "/vocabluary/static/css/main.97468f71.css.map",
     "main.7c651724.js.map": "/vocabluary/static/js/main.7c651724.js.map",
     "787.15dfc6d7.chunk.js.map": "/vocabluary/static/js/787.15dfc6d7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a245008c.css",
+    "static/css/main.97468f71.css",
     "static/js/main.7c651724.js"
   ]
 }
