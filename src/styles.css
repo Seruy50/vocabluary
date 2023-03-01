@@ -1,3 +1,4 @@
+/* AddWords.js*/
 .main {
     display: flex;
     flex-direction: column;
@@ -19,4 +20,93 @@
 .words {
     margin: 0 auto;
     font-size: 18px;
+}
+
+
+/*AddWords.js end*/
+
+/*App.js (main page)*/
+body{
+    background-color: rgb(213, 214, 212);
+}
+
+.mainButtonsTemplate{
+    margin: 15% auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    height: 400px;
+    padding: 4%;
+    border: 10px double rgb(101, 103, 109);
+    border-radius: 50px;
+    box-sizing: border-box;
+}
+
+.chooseButtons {
+    width: 200px;
+    height: 200px;
+    border: 5px solid rgba(128, 128, 128, 0.2);
+    border-radius: 5%;
+    transition: all 0.1s;
+    font-family: "Aboreto", cursive;
+    font-weight: bold;
+    font-size: 25px;
+    text-shadow: 3px 3px 3px gray;;
+    box-shadow: 5px 5px 20px gray;
+}
+
+.chooseButtons:hover {
+    color: white;
+    width: 250px;
+    height: 250px;
+    transform-origin: center;
+    background-color: black;
+    font-size: 30px;
+}
+
+.add:hover{
+    background-color: rgba(145, 167, 213 
+    , 0.7);
+}
+
+.training:hover {
+    background-color: rgba(132, 236, 113, 0.7);
+}
+
+.vocabluary:hover {
+    background-color: rgba(212, 222, 148, 0.7);
+}
+
+.vocabluary:active {
+    background-color: rgba(212, 222, 148, 0.7);
+    font-size: 25px;
+}
+
+.chooseButtons:active {
+    transition: left 5px;
+    width: 190px;
+    height: 190px;
+}
+
+.hideElement {
+    display: none;
+}
+/*App.js (main page end)*/
+
+/*Training.js start*/
+
+.answerMark {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: 1px solid black;
+}
+
+.rightAnswer {
+    background-color: green;
+}
+
+.wrongAnswer {
+    background-color: red;
 }
