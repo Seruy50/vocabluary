@@ -1,26 +1,8 @@
 import {React, useState} from 'react';
-import words from './Words'
+import words from './Words';
+import {v4 as uuidv4} from 'uuid'
 
-export default function Training(){
-    const [wordsList, setWordsList] = useState()
-    const [wrongWords, setWrongWords] = useState([])
-    const [start, setStart] = useState(false)
-    
-    const startTest = () => {
-        setStart(true);
-        randomWords(wordsList, setWordsList);
-        console.log(wordsList)
-    }
-
-    return <div>
-        <button onClick={startTest}>Натисни на мене, щооб почати</button>
-        {start ? <TestInputsFields wordsList={wordsList} wrongWords={wrongWords} setWrongWords={setWrongWords}/> : <></>}
-        {wrongWords.length !== 0 ? 'Слова, що варто повторити/вивчити: ' + {wrongWords} : ''}
-    </div>
-}
-
-function randomWords(wordsList, setWordsList) {
-
+function randomWords(setWordsList) {
     let randomNumbers = []; 
 
     for(let i = 0; i < 10;){
@@ -34,19 +16,16 @@ function randomWords(wordsList, setWordsList) {
     }
 
     let obj = [];
+
     for(let i = 0; i < randomNumbers.length; i++){  
         let one = words.filter(item => item.id === randomNumbers[i])
         obj.push(one);
         }
-    console.log(obj)
     setWordsList([...obj])
-    console.log(wordsList)
-    console.log()
 }
 
 function TestInputsFields({wrongWords, setWrongWords, wordsList}){
     let wordsToTest = wordsList;
-    console.log(wordsToTest)
     
     return <div>
         <Input wordEng={wordsToTest[0][0].eng} wordUkr={wordsToTest[0][0].ukr} wrongWords={wrongWords} setWrongWords={setWrongWords}/>
@@ -68,22 +47,52 @@ function Input({wordEng, wordUkr, wrongWords, setWrongWords}){
     const [answerCheck, setAnswerCheck] = useState(null);
    
     const enter = (e) =>{
+        wordUkr = wordUkr.split(', ')
         if(e.keyCode === 13){
-            if(value === wordUkr) {
+            console.log(wordUkr)
+            if(value === wordUkr[0] || value === wordUkr[1] || value === wordUkr[2]) {
                 setAnswerCheck(true);
             } else {
                 setAnswerCheck(false);
-                setWrongWords([...wrongWords, wordEng + ', '])
+                setWrongWords([...wrongWords, wordEng])
             }
         setDis(true);
         }
     }
-    console.log(wrongWords)
 
-
-    return <p> {wordEng}<input value={value} onChange={(e) => setValue(e.target.value)} onKeyDown={(e) => enter(e)} disabled={dis}></input> 
+    return <p> {wordEng}<input value={value} onChange={(e) => setValue(e.target.value)} onKeyDown={(e) => enter(e)} disabled={dis} /> 
                         <span className={answerCheck ? "answerMark rightAnswer" : (answerCheck === false ? "answerMark wrongAnswer" : "answerMark")}></span>
                         <span>{answerCheck === false ? 'Правильний переклад -  ' + wordUkr + ';': ''}</span>
          </p>
     
 }
+
+function WrongWordsList({wrongWords}){
+    let mistakes = wrongWords.map(item => {
+        return <li key={uuidv4()}>{item}</li>
+    })
+
+    if(wrongWords.length > 0){
+        return <ul>{mistakes}</ul>
+    }
+
+}
+
+export default function Training(){
+    const [wordsList, setWordsList] = useState()
+    const [wrongWords, setWrongWords] = useState([])
+    const [start, setStart] = useState(false)
+    
+    const startTest = () => {
+        setStart(true);
+        randomWords(setWordsList);
+    }
+
+    return <div>
+        <button onClick={startTest}>Натисни на мене, щооб почати</button>
+        {start ? <TestInputsFields wordsList={wordsList} wrongWords={wrongWords} setWrongWords={setWrongWords}/> : <></>}
+        {wrongWords.length !== 0 ? 'Слова, що варто повторити/вивчити: ' : ''}
+        <WrongWordsList wrongWords={wrongWords}/>
+    </div>
+}
+

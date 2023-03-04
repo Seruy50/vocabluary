@@ -32,43 +32,39 @@ function Input({value, setValue, wordsArray, setWordsArray, currentKey, setCurre
   const changeText = (e) => {
     
     const MakeEnglishWord = () => {
-      setEngWord(e.target.value);
+      if(!spaceStatus) {setEngWord(e.target.value)};
       setValue(e.target.value);
       setSpaceStatus(true);
     }
 
     const lineWithWord = () => {
       if(engWord){
-        let text = e.target.value;
-        let arr = text.split(' ');
+
+        let lettersFromInput = e.target.value.replace(engWord, '').split('');
         
-        let obj = {q:'й', w:'ц', e:'у', r:'к', t:'е', 
+        let ukrLetters = {q:'й', w:'ц', e:'у', r:'к', t:'е', 
         y:'н', u:'г', i:'ш', o:'щ', 
         p:'з', '[':'х', ']':'ї', a:'ф', 
         s:'і', d:'в', f:'а', g:'п', 
         h:'р', j:'о', k:'л', l:'д', ';':'ж', 
         '222':'є', z:'я', x:'ч', c:'с', v:'м', 
-        b:'и', n:'т', m:'ь', ',':'б', '.':'ю'};
+        b:'и', n:'т', m:'ь', ',':'б', '.':'ю', '32': ' '};
 
-        arr.shift();
-        arr = arr.join().split('');
-
-        arr = arr.map(item => {
+        lettersFromInput = lettersFromInput.map(item => {
             if(currentKey === 222){
-              return obj['222']
+              return ukrLetters['222'];
             }
-          return obj[item] ? obj[item] : item;
+          return ukrLetters[item] ? ukrLetters[item] : item;
         })
-        
-        text = arr.join(''); 
-        setValue([engWord + text]);
+
+        setValue([engWord + lettersFromInput.join('')]);
       }
     }
 
     if(currentKey !== 8 && spaceStatus){
       lineWithWord()
-      } else if(currentKey !== 8 && currentKey === 32){
-        MakeEnglishWord();
+      } else if(currentKey !== 8 && currentKey === 32 && !spaceStatus){
+         MakeEnglishWord()
         } else if(currentKey !== 8){
           setValue(e.target.value);
           } else if(currentKey === 8){
@@ -102,11 +98,9 @@ function Words({wordsArray}){
   let start = '{';
   let end = '}';
   
-  console.log(wordsArray)
-  
   nes = nes.map((item, index) => {
     
-    return <p key={index}>{start}"id": {item.split(' ')[0]}, "eng": "{item.split(' ')[1]}", "ukr": "{item.split(' ')[2]}"{end},</p>
+    return <p key={index}>{start}"id": {item.split(' ')[0]}, "eng": "{item.split(' ')[1]}", "ukr": "{item.split(' ')[2]}{item.split(' ')[3] ? ', ' + item.split(' ')[3] : ''}{item.split(' ')[4] ? ', ' + item.split(' ')[4] : ''}"{end},</p>
   })
   
   return <div>
