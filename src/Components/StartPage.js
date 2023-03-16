@@ -1,6 +1,5 @@
 import {React} from 'react'
 import "@fontsource/aboreto"
-import  '../styles.css'
 import {useNavigate} from 'react-router-dom'
 
 

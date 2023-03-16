@@ -1,5 +1,4 @@
-import {React, useState} from 'react'
-import styles from './styles.css'
+import {React} from 'react'
 
 
 export default function Vocabluary(){

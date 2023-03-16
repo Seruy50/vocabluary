@@ -1,11 +1,11 @@
-import {React, useState} from 'react'
+import React from 'react'
 import "@fontsource/aboreto"
 import  './styles.css'
-import AddWords from './AddWords.js'
-import Training from './Training.js'
-import Vocabluary from './Vocabluary.js'
-import StartPage from './startPage'
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import AddWords from './Components/AddWords.js'
+import Training from './Components/Training.js'
+import Vocabluary from './Components/Vocabluary.js'
+import StartPage from './Components/StartPage.js'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 
 
@@ -25,20 +25,3 @@ export default function App(){
 
 
 
-
-/*
-export default function App(){
-  const [currentChoise, setCurrentChoise] = useState(null);
-
-  return <div>
-           <div className={!currentChoise ? "mainButtonsTemplate" : "hideElement"}>
-            <button className={!currentChoise ? "chooseButtons add" : "hideElement"} onClick={() => setCurrentChoise('Add')}>Add words</button>
-            <button className={!currentChoise ? "chooseButtons training" : "hideElement"} onClick={() => setCurrentChoise('Training')}>Training</button>
-            <button className={!currentChoise ? "chooseButtons vocabluary" : "hideElement"} onClick={() => setCurrentChoise('Vocabluary')}>Vocabluary</button>
-           </div>
-           <div>
-            {currentChoise === "Add" ? <AddWords /> : (currentChoise === "Training" ? <Training /> : (currentChoise === "Vocabluary" ? <Vocabluary /> : <></>))}
-           </div>
-        </div>
-}
-*/

@@ -1,7 +1,7 @@
 import {React, useState} from 'react';
 import words from './Words';
 import {v4 as uuidv4} from 'uuid';
-import './App.css'
+
 
 function randomWords(setWordsList, countOfWords, concreteWords, startPosition, quantityOfWords) {
     let numbers = []; 

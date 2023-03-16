@@ -1,5 +1,4 @@
 import {React, useState} from 'react'
-import styles from './styles.css'
 
 export default function AddWords(){
   const [value, setValue] = useState('');
