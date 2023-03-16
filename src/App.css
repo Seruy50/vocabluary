@@ -88,3 +88,31 @@ body {
 .game-info {
   margin-left: 20px;
 }
+
+
+/* Training page start */
+
+.training__start__form {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid red;
+  width: 35%;
+  max-width: 300px;
+  margin: 200px auto;
+
+}
+.training__start__form div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.training__start__form input{
+  width: 200px;
+  height: 25px;
+}
+
+.stopDisplay {
+  display: none;
+}

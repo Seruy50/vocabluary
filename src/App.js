@@ -1,10 +1,32 @@
 import {React, useState} from 'react'
 import "@fontsource/aboreto"
-import styles from './styles.css'
+import  './styles.css'
 import AddWords from './AddWords.js'
 import Training from './Training.js'
 import Vocabluary from './Vocabluary.js'
+import StartPage from './startPage'
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
+
+
+export default function App(){
+
+  return (
+    <Router>
+      <Routes>
+        <Route path="/vocabluary" element={<StartPage/>}/>
+        <Route path="/addWords" element={<AddWords />}/>
+        <Route path="/training" element={<Training />}/>
+        <Route path="/allWords" element={<Vocabluary />}/>
+      </Routes>
+    </Router>
+  )
+}
+
+
+
+
+/*
 export default function App(){
   const [currentChoise, setCurrentChoise] = useState(null);
 
@@ -19,3 +41,4 @@ export default function App(){
            </div>
         </div>
 }
+*/

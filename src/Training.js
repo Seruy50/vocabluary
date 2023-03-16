@@ -1,43 +1,47 @@
 import {React, useState} from 'react';
 import words from './Words';
-import {v4 as uuidv4} from 'uuid'
+import {v4 as uuidv4} from 'uuid';
+import './App.css'
 
-function randomWords(setWordsList) {
-    let randomNumbers = []; 
+function randomWords(setWordsList, countOfWords, concreteWords, startPosition, quantityOfWords) {
+    let numbers = []; 
 
-    for(let i = 0; i < 10;){
-        let random = Math.floor(Math.random() * (words.length - 1 + 1) + 1);
-        if(randomNumbers.includes(random)){
-            continue
-        } else {
-            randomNumbers.push(random);
-            i++;
+    if(!concreteWords){ 
+        for(let i = 0; i < (+countOfWords === 0 ? 25 : countOfWords) ; ){
+            let random = Math.floor(Math.random() * (words.length - 1 + 1) + 1);
+            if(numbers.includes(random)){
+                continue
+            } else {
+                numbers.push(random);
+                i++;
+            }
+        }
+    } else {
+        for(let i = startPosition, k = 0; k < quantityOfWords; k++ ){
+            numbers.push(+i);
+            i = +i + 1;
         }
     }
+    console.log(numbers)
 
     let obj = [];
 
-    for(let i = 0; i < randomNumbers.length; i++){  
-        let one = words.filter(item => item.id === randomNumbers[i])
+    for(let i = 0; i < numbers.length; i++){  
+        let one = words.filter(item => item.id === numbers[i])[0];
         obj.push(one);
         }
     setWordsList([...obj])
 }
 
 function TestInputsFields({wrongWords, setWrongWords, wordsList}){
-    let wordsToTest = wordsList;
-    
+    console.log(wordsList)
+    let answerFields = wordsList.map(item => {
+        let word = <Input wordEng={item.eng} wordUkr={item.ukr} wrongWords={wrongWords} setWrongWords={setWrongWords}/>
+        return word;
+    });
+
     return <div>
-        <Input wordEng={wordsToTest[0][0].eng} wordUkr={wordsToTest[0][0].ukr} wrongWords={wrongWords} setWrongWords={setWrongWords}/>
-        <Input wordEng={wordsToTest[1][0].eng} wordUkr={wordsToTest[1][0].ukr} wrongWords={wrongWords} setWrongWords={setWrongWords}/>
-        <Input wordEng={wordsToTest[2][0].eng} wordUkr={wordsToTest[2][0].ukr} wrongWords={wrongWords} setWrongWords={setWrongWords}/>
-        <Input wordEng={wordsToTest[3][0].eng} wordUkr={wordsToTest[3][0].ukr} wrongWords={wrongWords} setWrongWords={setWrongWords}/>
-        <Input wordEng={wordsToTest[4][0].eng} wordUkr={wordsToTest[4][0].ukr} wrongWords={wrongWords} setWrongWords={setWrongWords}/>
-        <Input wordEng={wordsToTest[5][0].eng} wordUkr={wordsToTest[5][0].ukr} wrongWords={wrongWords} setWrongWords={setWrongWords}/>
-        <Input wordEng={wordsToTest[6][0].eng} wordUkr={wordsToTest[6][0].ukr} wrongWords={wrongWords} setWrongWords={setWrongWords}/>
-        <Input wordEng={wordsToTest[7][0].eng} wordUkr={wordsToTest[7][0].ukr} wrongWords={wrongWords} setWrongWords={setWrongWords}/>
-        <Input wordEng={wordsToTest[8][0].eng} wordUkr={wordsToTest[8][0].ukr} wrongWords={wrongWords} setWrongWords={setWrongWords}/>
-        <Input wordEng={wordsToTest[9][0].eng} wordUkr={wordsToTest[9][0].ukr} wrongWords={wrongWords} setWrongWords={setWrongWords}/>
+        {answerFields}
     </div>
 }
 
@@ -45,7 +49,15 @@ function Input({wordEng, wordUkr, wrongWords, setWrongWords}){
     const [value, setValue] = useState('');
     const [dis, setDis] = useState(false);
     const [answerCheck, setAnswerCheck] = useState(null);
-   
+
+    let answerArea = <input value={value} 
+                            onChange={(e) => setValue(e.target.value)} 
+                            onKeyDown={(e) => enter(e)} 
+                            disabled={dis} 
+                    />; 
+    let answerMarker = <span className={answerCheck ? "answerMark rightAnswer" : (answerCheck === false ? "answerMark wrongAnswer" : "answerMark")}></span>;
+    let rightAnswers = <span>{answerCheck === false ? 'Правильний переклад -  ' + wordUkr + ';': ''}</span>;
+
     const enter = (e) =>{
         wordUkr = wordUkr.split(', ')
         if(e.keyCode === 13){
@@ -60,10 +72,7 @@ function Input({wordEng, wordUkr, wrongWords, setWrongWords}){
         }
     }
 
-    return <p> {wordEng}<input value={value} onChange={(e) => setValue(e.target.value)} onKeyDown={(e) => enter(e)} disabled={dis} /> 
-                        <span className={answerCheck ? "answerMark rightAnswer" : (answerCheck === false ? "answerMark wrongAnswer" : "answerMark")}></span>
-                        <span>{answerCheck === false ? 'Правильний переклад -  ' + wordUkr + ';': ''}</span>
-         </p>
+    return <p>{wordEng}{answerArea}{answerMarker}{rightAnswers}</p>
     
 }
 
@@ -82,17 +91,47 @@ export default function Training(){
     const [wordsList, setWordsList] = useState()
     const [wrongWords, setWrongWords] = useState([])
     const [start, setStart] = useState(false)
-    
+    const [countOfWords, setCountOfWords] = useState(0)
+    const [concreteWords, setConcreteWords] = useState(false)
+    const [startPosition, setStartPosition] = useState('');
+    const [quantityOfWords, setQuantityOfWords] = useState('');
+
+    let quantityOfRandomWords = <div>
+                                    <p>Enter quantity of words</p>
+                                    <input value={countOfWords} 
+                                           onChange={(e) => setCountOfWords(e.target.value)} 
+                                           placeholder="Enter quantity" />
+                                </div>
+                     
+    let concreteWordsForm = <>
+            <div>
+                <p>Start position:</p> <input value={startPosition}
+                        onChange={(e) => setStartPosition(e.target.value)} />
+            </div>
+            <div>
+                <p>Quantity of words:</p> <input value={quantityOfWords} 
+                        onChange={(e) => setQuantityOfWords(e.target.value)} />
+            </div>
+    </>
+
     const startTest = () => {
         setStart(true);
-        randomWords(setWordsList);
+        randomWords(setWordsList, countOfWords, concreteWords, startPosition, quantityOfWords);
     }
 
     return <div>
-        <button onClick={startTest}>Натисни на мене, щооб почати</button>
-        {start ? <TestInputsFields wordsList={wordsList} wrongWords={wrongWords} setWrongWords={setWrongWords}/> : <></>}
-        {wrongWords.length !== 0 ? 'Слова, що варто повторити/вивчити: ' : ''}
-        <WrongWordsList wrongWords={wrongWords}/>
+        <div className={start ? "training__start__form stopDisplay" : "training__start__form"}>
+            <div><p>I want to shoose concrete words: </p><input type="checkbox" onClick={() => setConcreteWords(!concreteWords)} /></div>
+                {concreteWords ? concreteWordsForm : quantityOfRandomWords}
+            <button onClick={startTest}>Натисни на мене, щооб почати</button>
+        </div>
+        <div className="training__test__form">   
+            {start ? <TestInputsFields wordsList={wordsList} wrongWords={wrongWords} setWrongWords={setWrongWords}/> : null}
+        </div>
+        <div className="training__worngWords__form">
+            {wrongWords.length !== 0 ? 'Слова, що варто повторити/вивчити: ' : ''}
+            <WrongWordsList wrongWords={wrongWords}/>
+        </div>
     </div>
 }
 
