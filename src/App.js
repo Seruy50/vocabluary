@@ -15,9 +15,9 @@ export default function App(){
     <Router>
       <Routes>
         <Route path="/vocabluary" element={<StartPage/>}/>
-        <Route path="/addWords" element={<AddWords />}/>
-        <Route path="/training" element={<Training />}/>
-        <Route path="/allWords" element={<Vocabluary />}/>
+        <Route path="/vocabluary/new-words" element={<AddWords />}/>
+        <Route path="/vocabluary/training" element={<Training />}/>
+        <Route path="/vocabluary/dictionary" element={<Vocabluary />}/>
       </Routes>
     </Router>
   )
