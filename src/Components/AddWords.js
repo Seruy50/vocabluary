@@ -99,7 +99,11 @@ function Words({wordsArray}){
   
   nes = nes.map((item, index) => {
     
-    return <p key={index}>{start}"id": {item.split(' ')[0]}, "eng": "{item.split(' ')[1]}", "ukr": "{item.split(' ')[2]}{item.split(' ')[3] ? ', ' + item.split(' ')[3] : ''}{item.split(' ')[4] ? ', ' + item.split(' ')[4] : ''}"{end},</p>
+    return <p key={index}>{start}"id": {item.split(' ')[0]}, 
+                                "eng": "{item.split(' ')[1]}", 
+                                "ukr": "{item.split(' ')[2]}{item.split(' ')[3] ? 
+                                      ', ' + item.split(' ')[3] : ''}{item.split(' ')[4] ? 
+                                      ', ' + item.split(' ')[4] : ''}"{end},</p>
   })
   
   return <div>

@@ -44,8 +44,8 @@ body{
 }
 
 .chooseButtons {
-    width: 200px;
-    height: 200px;
+    width: 30%;
+    height: 90%;
     border: 5px solid rgba(128, 128, 128, 0.2);
     border-radius: 5%;
     transition: all 0.1s;
@@ -58,8 +58,8 @@ body{
 
 .chooseButtons:hover {
     color: white;
-    width: 250px;
-    height: 250px;
+    width: 35%;
+    height: 95%;
     transform-origin: center;
     background-color: black;
     font-size: 30px;
@@ -85,13 +85,38 @@ body{
 
 .chooseButtons:active {
     transition: left 5px;
-    width: 190px;
-    height: 190px;
+    width: 27%;
+    height: 85%;
+    font-size: 25px;
 }
 
 .hideElement {
     display: none;
 }
+
+@media screen and (max-width: 1200px){
+    .mainButtonsTemplate{
+        flex-direction: column; 
+    }
+
+    .chooseButtons {
+        width: 90%;
+        height: 30%;
+    }
+
+    .chooseButtons:hover {
+        width: 95%;
+        height: 35%;
+    }
+
+    .chooseButtons:active {
+        transition: left 5px;
+        width: 77%;
+        height: 35%;
+        font-size: 20px;
+    }
+}
+
 /*App.js (main page end)*/
 
 /*Training.js start*/
@@ -135,3 +160,38 @@ body{
 .stopDisplay {
     display: none;
 }
+
+.training__test__form {
+    width:45%;
+    border: dotted 5px red;
+    margin: 5% auto;
+    padding: 2%;
+    box-sizing: border-box;
+}
+.training__question {
+    display: flex;
+    justify-content: space-between;
+}
+.training__question p:nth-child(1) {
+    text-align: center;
+    width: 15%;
+}
+.training__question p:nth-child(2) {
+    text-align: right;
+    width: 25%;
+}
+.training__question p:nth-child(3) {
+    width: 5%;
+}
+.training__question p:nth-child(4) {
+    width: 40%;
+}
+
+.green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+}
+
