@@ -5,6 +5,8 @@
   "private": true,
   "dependencies": {
     "@fontsource/aboreto": "^4.5.1",
+    "@fontsource/akaya-telivigala": "^4.5.8",
+    "@fontsource/annie-use-your-telescope": "^4.5.9",
     "@fontsource/open-sans": "^4.5.14",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

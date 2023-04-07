@@ -1,5 +1,6 @@
 import React from 'react'
 import "@fontsource/aboreto"
+import "@fontsource/annie-use-your-telescope"
 import  './styles.css'
 import AddWords from './Components/AddWords.js'
 import Training from './Components/Training.js'

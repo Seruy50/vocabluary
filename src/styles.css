@@ -66,8 +66,7 @@ body{
 }
 
 .add:hover{
-    background-color: rgba(145, 167, 213 
-    , 0.7);
+    background-color: rgba(145, 167, 213, 0.7);
 }
 
 .training:hover {
@@ -117,74 +116,173 @@ body{
     }
 }
 
+.header {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+}
 /*App.js (main page end)*/
 
 /*Training.js start*/
 
-.answerMark {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border: 1px solid black;
-}
+.training__main {
+    width: 100%;
+    min-height: 100vh;
+    border-top: 1px solid green;
+    background-color: rgba(132, 236, 100, 0.7);
+}   
 
-.rightAnswer {
-    background-color: green;
-}
-
-.wrongAnswer {
-    background-color: red;
-}
-
-.training__start__form {
+.training__form {
+    position: static;
+    margin: 5% auto;
     display: flex;
     flex-direction: column;
-    border: 1px solid red;
-    width: 35%;
-    max-width: 300px;
-    margin: 200px auto;  
+    border-radius: 15px;
+    padding: 25px;
+    width: 400px;
+    max-width: 40%;
+    box-shadow: 5px 5px 5px 5px green;
+    background-color: rgba(132, 236, 100, 0.7);
 }
 
-.training__start__form div {
+.closeToTop {
+    margin: 90px auto;
+}
+
+.wrongWords {
+    align-items: center;
+    width: 35%;
+}
+
+.start { 
+    vertical-align: center;
+    justify-content:center;
+    box-shadow: 5px 5px 5px 5px green;
+    background-color: rgba(132, 236, 100, 0.7);
+}
+
+.start div {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
   
-.training__start__form input{
-    width: 200px;
+.start input{
+    width: 70px;
     height: 25px;
+    border: 1px solid white;
+    border-radius: 25px;
+    background-color: #a1da7d;
+    font: 20px/20px "Magneto";
+    text-align: center;
+}
+
+.start input:focus {
+    outline: none;
+    background-color: #ace0a7;
+}
+
+.start__buttonsForm button{
+    width: 30%;
+    height: 40px;
+    font: 20px/20px "Magneto";
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: #a1da7d;
+}
+
+.start__buttonsForm button:hover{
+   width: 31%;
+   height: 42px;
+   background-color: #37ef0e;
+}
+
+.start__buttonStart {
+    margin-top: 25px;
+}
+
+.start__buttonStart button{
+    width: 100%;
+    height: 50px;
+    background-color: #a1da7d;
+    border: 1px solid white;
+    font: 25px/30px "Magneto";
+}
+
+.start__buttonStart button:hover {
+   background-color: #37ef0e;
+}
+
+.start__text{
+    font: bold 20px/25px "Bookman Old Style";
+}
+
+/*TestField*/
+
+.page {
+    height: 100vh;
+}
+
+.training__question {
+    display: flex;
+    justify-content: space-between;
+    font: bold 20px/25px "Bookman Old Style";
+}
+
+.answerMark {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.rightAnswer {
+    background-color: rgb(44, 130, 44);
+}
+
+.wrongAnswer {
+    background-color: rgb(210, 72, 72);
 }
   
 .stopDisplay {
     display: none;
 }
 
-.training__test__form {
-    width:45%;
-    border: dotted 5px red;
-    margin: 5% auto;
-    padding: 2%;
-    box-sizing: border-box;
-}
-.training__question {
-    display: flex;
-    justify-content: space-between;
-}
 .training__question p:nth-child(1) {
-    text-align: center;
+    text-align: left;
     width: 15%;
 }
 .training__question p:nth-child(2) {
-    text-align: right;
     width: 25%;
 }
+
+.training__question p:nth-child(2) input{
+    width: 150px;
+    font: 22px/25px "Bookman Old Style";
+    text-align: center;
+    color: black;
+    background-color: rgba(132, 236, 100, 0.7);
+    border: 1px solid white;
+    border-radius: 25px;
+}
+
+.training__question p:nth-child(2) input:disabled{
+    background-color: rgba(100, 236, 111, 0.7);
+    border: 1px solid black;
+}
+
+.training__question p:nth-child(2) input:focus{
+    outline: none;
+    border: 1px solid rgb(56, 77, 17);
+}
+
 .training__question p:nth-child(3) {
     width: 5%;
-}
-.training__question p:nth-child(4) {
-    width: 40%;
+    display:flex;
+    align-items: center;
 }
 
 .green {
@@ -193,5 +291,81 @@ body{
 
 .red {
     background-color: red;
+}
+
+.training__wordsFromList {
+    display: flex;
+    font: bold 20px/20px "Bookman Old Style";
+}
+
+.training__deleteItem{
+    display: flex;
+    position: relative;
+    margin-right: 15px;
+    width: 15px;
+    height: 15px;
+    border: none;
+    background-color: rgba(132, 236, 100, 0.7);
+}
+
+.training__deleteItem span:first-child {
+    position: absolute;
+    top: 9px;
+    left: -2px;
+    width: 15px;
+    border: 2px solid red;
+    rotate: 45deg;
+    background-color: red;
+}
+
+.training__deleteItem span:last-child {
+    position: absolute;
+    top: 9px;
+    left: -2px;
+    width: 15px;
+    border: 2px solid red;
+    rotate: -45deg;
+    background-color: red;
+}
+
+
+/*repeat section*/
+
+.training__fromTo__word{
+    text-align: center;
+    font: 30px/40px "Bookman Old Style";
+}
+
+
+.training__ukrainianTranslation{
+    font-family: "Bookman Old Style";
+}
+
+.training__fromTo__input{
+    margin: 0px auto;
+    width: 80%;
+    font: 25px/30px "Bookman Old Style";
+    text-align: center;
+    border-radius: 20px;
+}
+
+.training__results{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.training__results p:first-child{
+    font: italic bold 40px/45px "Broadway"
+}
+
+.training__results p:last-child{
+    font:  25px/30px "Bookman Old Style";
+    text-align: center;
+}
+
+.training__end{
+    font: 45px/50px "Onyx";
+    text-align: center;
 }
 

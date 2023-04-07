@@ -13,21 +13,21 @@ export default function StartingField({
                                         randomWords
                                     }){
     let quantityOfRandomWords = <div>
-            <p>Quantity of words</p>
+            <p className="start__text">Quantity of words:</p>
             <input value={countOfWords} 
                    onChange={(e) => setCountOfWords(e.target.value)} 
-                   placeholder="Enter quantity" />
+                   onFocus={(e) => setCountOfWords('')} />
         </div>
 
     let concreteWordsForm = <>
         <div>
-            <p>Start position:</p> <input value={startPosition}
+            <p className="start__text">Start position:</p> <input value={startPosition}
                                           onChange={(e) => setStartPosition(e.target.value)} />
         </div>
         <div>
-            <p>Quantity of words:</p> <input value={countOfWords} 
+            <p className="start__text">Quantity of words:</p><input value={countOfWords} 
                 onChange={(e) => setCountOfWords(e.target.value)} 
-                placeholder="Enter quantity" />
+            />
         </div>
     </>
 
@@ -35,10 +35,17 @@ export default function StartingField({
         setStart('test');
         randomWords(setWordsList, countOfWords, concreteWords, startPosition);
     }
-
-    return <div className="training__start__form">
-            <div><p>I want to сhoose concrete words: </p><input type="checkbox" onClick={() => setConcreteWords(!concreteWords)} /></div>
+    
+    return <div className="training__form start">
+            <div className="start__container start__text"><p className="start__text">I want to сhoose concrete words: </p><input className="start__checkBox" type="checkbox" onClick={() => setConcreteWords(!concreteWords)} /></div>
                 {concreteWords ? concreteWordsForm : quantityOfRandomWords}
-            <button onClick={startTest}>Натисни на мене, щооб почати</button>
+            <div className="start__buttonsForm">
+                <button onClick={() => setCountOfWords(20)}>20</button>
+                <button onClick={() => setCountOfWords(50)}>50</button>
+                <button onClick={() => setCountOfWords(100)}>100</button>
+            </div>
+            <div className="start__buttonStart">
+                <button onClick={startTest}>Press on me to start!</button>
+            </div>
         </div>
 }

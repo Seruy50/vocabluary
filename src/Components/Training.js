@@ -3,15 +3,15 @@ import '../styles.css'
 import Main from './Training/Main.js';
 
 export default function Training(){
-    
+    const [wordsList, setWordsList] = useState([]);
 
-    return <>
-        <header>
-            <p>Here i will set header, but not today</p>
+    return <div className="training__main" style={{height: wordsList.length > 0 ? 250 + wordsList.length * 69 + 'px' : 100 + 'vh'}}>
+        <header className="header">
+    
         </header>
         <main>
-            <Main />
+            <Main wordsList={wordsList} setWordsList={setWordsList}/>
         </main>
-    </>
+    </div>
 }
 
