@@ -10,21 +10,17 @@ export default function Results ({
     let message;
     let wordsWithMistakes = randerWordsWithMistakes(mistakes, trainStage);
     
-    
     if(resultInPercents >= 80){
-        message = 'Nice, go on, ultimate result!';
+        message = 'Great, go on, ultimate result!';
     } else if(resultInPercents >= 60 && resultInPercents < 90 ){
         message = 'Nice one, but you need to repeat next words: ';
     } else {
-        message = 'You are awesome. Very stupid, but awesome. Repeat, please, next words: '
+        message = 'Not the best result, really. Please, carefully next words: '
     }
-    
-    
-    console.log(wordsWithMistakes)
 
     return <div className="training__results">
         <p>{count[0] - mistakes[0] + '/' + count[0]}</p>
-        <p>{message}<i><b>{wordsWithMistakes};</b></i></p>
+        <p>{message}<i><b>{message[0] !== 'G' ? wordsWithMistakes + ';' : null}</b></i></p>
     </div>
 }
 
@@ -35,11 +31,10 @@ function randerWordsWithMistakes( words, trainStage ){
     
     words.map(item => {
         if(trainStage === 'english'){
-            if(!(final.includes(item.eng))){
-                return final.push(item.eng);
+            if(!(final.includes(item.eng.slice(0, 1).toLowerCase() + item.eng.slice(1)))){
+                return final.push(item.eng.slice(0, 1).toLowerCase() + item.eng.slice(1));
             }
         } else {
-            console.log(item.ukr)
             item.ukr.map(item => {
                 if(!final.includes(item)){
                     return final.push(item);

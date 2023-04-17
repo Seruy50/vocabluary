@@ -67,7 +67,11 @@ return <StartingField
             Great, you've finished the test! My congratulations!
         </p>
         <div className="start__buttonStart">
-            <button onClick={() => setStart('begining')}>Back to the start</button>
+            <button onClick={() => {
+                setStart('begining');
+                setWrongWords([]);
+
+                }}>Back to the start</button>
         </div>
     </div>
 }

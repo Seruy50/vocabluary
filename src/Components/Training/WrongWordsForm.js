@@ -17,25 +17,28 @@ export default function WrongWordsList({wrongWords, setWrongWords, setStart, set
         setStart(status);
         if(status === 'firstTraining'){
             let words = [...wrongWords, ...wrongWords, ...wrongWords, ...wrongWords, ...wrongWords];
+            console.log(words)
             words.sort(() => Math.random() - 0.5)
             setWrongWords([...words])
         }
         setTrainStage('english')
     } 
-    console.log(mistakes.length)
+
     let list = (mistakes.length > 0 ? <><ul>{mistakes}</ul>
                                         <div className="start__buttonStart">
                                             <button onClick={() => handleClick('firstTraining')}>Next</button>
                                         </div>
                                       </> 
                                     : 
-                                      <><p>You know all the words from the list! Great! <br /> Or, maybe, you clicked on 'Results' button, 
-                                            without doing anything on previous page. In this case, you're asshole!</p>
-                                        <div className="start__buttonStart">
-                                            <button onClick={() => handleClick('begining')}>Back</button>
-                                        </div>
-                                      </>)
-    console.log(list)
+                                      <>
+                                            <p>You know all the words from the list! Great! <br /> Or, maybe, you clicked on 'Results' button, 
+                                                without doing anything on previous page. In this case, you're asshole!</p>
+                                            <div className="start__buttonStart">
+                                                <button onClick={() => handleClick('begining')}>Back</button>
+                                            </div>
+                                      </>
+    )
+    
 
     
     return <div className="training__form wrongWords">

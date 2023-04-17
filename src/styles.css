@@ -369,3 +369,295 @@ body{
     text-align: center;
 }
 
+/*Training page end*/
+
+/*Dictionary page start*/
+
+/*Translation*/
+.dictionary__mainPage {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100vh;
+    background-color:  rgba(212, 222, 148, 0.7);
+    padding: 10px 0px 0px 10px;
+      
+}
+
+.dictionary__mainForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 30px;    
+}
+
+.dictionary__translationBar {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 25px;
+}
+
+.dictionary__wordsForTranslation__eng {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 30%;
+    height: 40px;
+}
+
+.dictionary__wordsForTranslation__ukr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    text-align: center;
+    width: 70%;
+    height: 52px;
+    border: 5px double grey; 
+    border-left: none;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 30px;
+}
+
+.dictionary__wordsForTranslation__eng input {
+    width: 100%;
+    height: 52px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 15px;
+    background-color: white;
+    font: 25px/30px times;
+    text-align: center;
+    box-sizing: border-box;
+    border: 5px double grey;;
+}
+
+.dictionary__wordsForTranslation__eng input:focus {
+    outline: none;
+    background-color: white;
+}
+
+.dictionary__wordsForTranslation__english{
+    position: relative;
+}
+
+.dictionary__wordsForTranslation__englishInput{
+   position: relative;
+   border: 1px solid grey;
+   z-index: 2;
+}
+
+.dictionary__wordsForTranslation__ukrainian{
+    font: 25px/20px times;
+}
+
+.dictionary__wordsForTranslation__hints{
+    display: none;
+    position: absolute;
+    text-align: left;
+    width: 100%;
+    background-color: white;
+    font: italic 20px/30px times;
+    color: black;
+    top: 30px;
+    border: 5px double grey;
+    border-top-left-radius: 150px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    z-index: 1;
+    display: none;
+    overflow: hidden;
+}
+
+.dictionary__wordsForTranslation__hints ul{
+   list-style-type: none;
+   padding: 0 0 0 10px;
+}
+
+.dictionary__wordsForTranslation__hints ul li:hover{
+    color: red;
+    cursor: pointer;
+ }
+ 
+/*Vocabluary*/
+
+.dictionary__vocabluary__list{
+    list-style-type: none;
+}
+
+.dictionary__mainForm__alphabetAndVocab {
+    display: flex;
+    width: 100%;
+}
+
+.alphabetAndVocab__active{
+    position: relative;
+    justify-content: space-between;
+}
+
+.dictionary__alphabet{
+    margin-left: 15%;
+    width: 70%;
+    height: 300px;
+    border: 5px double grey;
+    padding: 10px;
+    cursor: pointer;
+    transform-origin: left;
+    transition: margin-left 0.5s, width 0.5s;
+    box-sizing: border-box;
+}
+
+.alphabet__active{
+    width: 40%;
+    margin-left: -10%;
+    transition: margin-left 0.5s, width 0.5s;
+    border-right: none;
+}
+
+.dictionary__alphabet td{
+    border: 2px solid grey;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    font: 25px/30px times
+}
+
+.dictionary__alphabet td:hover{
+    border: 2px solid green;
+    font: 30px/30px times;
+    background-color: white;
+    color: blue;
+}
+
+.dictionary__vocabluary__listHolder{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 0 20px 0;
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    overflow: hidden;
+    width: 70.5%;
+    min-height: 322px;
+    border: 5px double grey;
+    box-sizing: border-box;
+    transition: width 0.5s, opacity 1s;
+    font: 22px/24px times;
+}
+
+.listHolder__active{
+    right: 0px;
+    z-index: 2;
+    opacity: 1;
+}
+
+.dictionary__vocabluary__buttonSection{
+    margin: 0 auto;
+    width: 80%;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.dictionary__vocabluary__list__button {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    margin-top: 2px;
+}
+
+.dictionary__vocabluary__list__button:hover {
+    background-color: green;
+}
+
+.dictionary__vocabluary__list__button:hover + span {
+    border: 2px solid yellow;
+}
+
+.dictionary__vocabluary__list__button span:first-child{
+    position: absolute;
+    width: 10px;
+    top: 6px;
+    left: 1px;
+    border: 2px solid black;
+    transform:rotate(90deg)
+}
+
+.dictionary__vocabluary__list__button span:last-child{
+    position: absolute;
+    top: 6px;
+    left: 1px;
+    width: 10px;
+    border: 2px solid black;
+}
+
+.dictionary__vocabluary__buttons{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.dictionary__vocabluary__buttons button{
+    width: 25%;
+    border: 2px double grey;
+    border-radius: 5px;
+    background-color: #ede3c1;
+    height: 30px;
+    font: 20px/25px "Magneto"
+}
+.dictionary__vocabluary__buttons button:first-child{
+    width: 50%;
+}
+.dictionary__vocabluary__buttons button:last-child{
+    width: 50%;
+}
+
+.dictionary__vocabluary__buttonSection__currentPage {
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    font: 24px/30px "Magneto"
+}
+
+.dictionary__vocabluary__buttonSection__countOfPages{
+    font: 25px/30px "Magneto"
+}
+
+/*MyWordsButtons*/
+
+.temporaryList {
+    display:none;
+    position: absolute;
+    right: 5px;
+    top: 100px;
+    width: 200px;
+    height: 500px;
+    background-color: #fff;
+}
+
+.temporaryButton{
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+}
+
+.temporaryButtonClear{
+    position: absolute;
+    right: 5px;
+    top: 60px;
+    width: 50px;
+    height: 20px;
+    background-color: #fff;
+}

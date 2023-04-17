@@ -16,6 +16,7 @@ export default function FromEnglishToUkrainian({
     const [mistakes, setMistakes] = useState([0]);
 
     let wrongWords = JSON.parse(JSON.stringify(originalWrongWords));
+    console.log(wrongWords)
 
     return <div className=" training__form">
                 <p className="training__fromTo__word">
@@ -36,15 +37,6 @@ export default function FromEnglishToUkrainian({
                         )}
                         disabled={count[0] === wrongWords.length}
                 />
-                <div className="start__buttonStart">
-                    <button 
-                            style={{display: count[0] === wrongWords.length ? 'none' : 'block'}}
-                            onClick={() => {
-                                setCount([count[0] + 1, count[1]]);
-                            }}
-                            disabled={count[0] === wrongWords.length}
-                    >Next</button>
-                </div>
                 {count[0] === wrongWords.length ? <Results count={count} 
                                                         mistakes={mistakes} 
                                                         trainStage={trainStage}
@@ -54,7 +46,6 @@ export default function FromEnglishToUkrainian({
                         <button onClick={() => {
                             setStart('secondTraining')
                             setTrainStage('ukrainian')
-                            console.log(trainStage)
                         }}>Next</button> : null}
                 </div>
     </div>
@@ -70,7 +61,6 @@ const changeWord = (e, value, setValue, wrongWords, count, setCount, mistakes, s
             } else { 
                 className = className + ' red';
                 setMistakes([mistakes[0] + 1, ...mistakes.slice(1), wrongWords[count[0]]])
-                console.log(mistakes)
     }} else if(e.keyCode === 13 && count[1] === 1){
         setCount([count[0] + 1, 0]);
         className = "training__fromTo__input";
@@ -81,10 +71,9 @@ const changeWord = (e, value, setValue, wrongWords, count, setCount, mistakes, s
 const word = (wrongWords, count) => {
 
     if(wrongWords.length !== 0 && count[0] !== wrongWords.length && className === "training__fromTo__input red"){
-        return wrongWords[count[0]].eng.slice(0, 1).toUpperCase() + 
-                    wrongWords[count[0]].eng.slice(1) + ' - ' +  wrongWords[count[0]].ukr.join(', ') + ';';
+        return wrongWords[count[0]].eng + ' - ' +  wrongWords[count[0]].ukr.join(', ') + ';';
     } else if(wrongWords.length !== 0 && count[0] !== wrongWords.length && className !== "training__fromTo__input red"){
-        return wrongWords[count[0]].eng.slice(0, 1).toUpperCase() + wrongWords[count[0]].eng.slice(1);
+        return wrongWords[count[0]].eng;
     } else if(count[0] === wrongWords.length){
         return 'That`s all';
     }
