@@ -659,7 +659,7 @@ body{
     height: 500px;
     overflow:auto;
     border: 5px double grey;
-    border-radius: 50px;
+    border-radius: 50px 0px 0px 50px;
     background-color: #e8e3e3; 
     z-index: 5;
 }
