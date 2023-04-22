@@ -1,4 +1,6 @@
-import react from 'react'
+import react from 'react';
+import { wordsFromMyList } from './Main';
+import allWords from '../Words.js'
 
 
 export default function StartingField({
@@ -10,7 +12,7 @@ export default function StartingField({
                                         setConcreteWords,
                                         setStart,
                                         setWordsList,
-                                        randomWords
+                                        randomWords,
                                     }){
     let quantityOfRandomWords = <div>
             <p className="start__text">Quantity of words:</p>
@@ -31,9 +33,42 @@ export default function StartingField({
         </div>
     </>
 
-    const startTest = ({}) => {
-        setStart('test');
-        randomWords(setWordsList, countOfWords, concreteWords, startPosition);
+    const startTest = (func, num) => {
+        let words = num === 1 ? allWords : wordsFromMyList();
+        let count = !isNaN(countOfWords) && countOfWords > 0 && countOfWords <= words.length;
+        let start = !isNaN(startPosition) && startPosition > 0 && 
+            startPosition <= words.length && +(startPosition - 1) + +countOfWords <= words.length;
+
+        switch(concreteWords){
+            case false:
+                if(count){
+                    setStart('test');
+                    func(setWordsList, countOfWords, startPosition, num);
+                } else if(isNaN(countOfWords)){
+                    alert('You should enter number, not letter(s)');
+                } else if(countOfWords <= 0){
+                    alert('Please, enter number, bigger than 0');
+                } else if(countOfWords > words.length){
+                    alert(`Current quantity of words in choosen vocabluary - ${words.length}.`);
+                };
+                break;
+            case true:
+                if(start){
+                    setStart('test');
+                    func(setWordsList, countOfWords, startPosition, num)
+                } else if(isNaN(startPosition)){
+                    alert('You should enter number, not letter(s)');
+                } else if(startPosition <= 0){
+                    alert('Please, enter number, bigger than 0');
+                } else if(startPosition > words.length){
+                    alert(`There's no ${startPosition} word in vocabluary, current quantity of words in choosen vocabluary - ${words.length}.`);
+                }else if(+(startPosition - 1) + +countOfWords > words.length){
+                    alert(`Current quantity of words in vocabluary - ${words.length}.`);
+                };
+                break;
+            default: 
+                break;
+        }
     }
     
     return <div className="training__form start">
@@ -45,7 +80,12 @@ export default function StartingField({
                 <button onClick={() => setCountOfWords(100)}>100</button>
             </div>
             <div className="start__buttonStart">
-                <button onClick={startTest}>Press on me to start!</button>
+                <button onClick={() => startTest(randomWords, 1)}>Press on me to start!</button>
+                
             </div>
+            <div className="start__buttonStart">
+                <button onClick={() => startTest(randomWords, 2)}>Training with my words</button>
+            </div>
+           
         </div>
 }

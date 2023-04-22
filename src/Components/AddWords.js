@@ -1,4 +1,5 @@
 import {React, useState} from 'react'
+import StartPage from './StartPage.js';
 
 export default function AddWords(){
   const [value, setValue] = useState('');
@@ -7,6 +8,7 @@ export default function AddWords(){
 
  
   return <div className="main">
+    <StartPage fame={'navigationBar'} add={'button'} training={'button'} vocabluary={'button'}/> 
     <div className="inputsArea">
       <Input currentKey={currentKey} setCurrentKey={setCurrentKey} value={value} setValue={setValue} wordsArray={wordsArray} setWordsArray={setWordsArray}/>
     </div>

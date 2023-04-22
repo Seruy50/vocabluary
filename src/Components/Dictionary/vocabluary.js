@@ -1,16 +1,18 @@
-import React from 'react';
+import {React, useState} from 'react';
 import words from '../../Components/Words.js'
+import { wordsFormation } from '../myWords.js';
 
 
 
 
-export default function Vocab({ choosenLetter, wordsCount, setWordsCount, setShow, currentPage, setCurrentPage, alphabetPosition }){
+export default function Vocab({ choosenLetter, wordsCount, setWordsCount, setShow, currentPage, setCurrentPage, alphabetPosition, list, setList }){
         let wordsList = [];
         let elem;
         let wordsForElem;
         let buttonsChangePage = [];
         let numberOfButtons;
         let startPosition = 25;
+        
         
         
        
@@ -21,26 +23,30 @@ export default function Vocab({ choosenLetter, wordsCount, setWordsCount, setSho
             wordsForElem.sort((a, b) => a.eng > b.eng ? 1 : -1) 
             for(let i = wordsCount - 25; i < (wordsForElem.length - 1 > wordsCount ? wordsCount :
                     wordsForElem.length - 1); i++){
-                        elem = <li key={+wordsForElem[i].id}>{wordsForElem[i].eng.slice(0, 1).toUpperCase() + 
-                            wordsForElem[i].eng.slice(1)} - {wordsForElem[i].ukr}<button onClick={() => 
-                                addToLocalStorage(wordsForElem[i].id, wordsForElem[i].eng, wordsForElem[i].ukr)}
-                                    className="dictionary__vocabluary__list__button">
-                                    <span></span><span></span></button></li>
+                        elem = <li key={+wordsForElem[i].id}><button onClick={() => {
+                            addToLocalStorage(wordsForElem[i].id, wordsForElem[i].eng, wordsForElem[i].ukr)
+                            wordsFormation(setList, list)}}
+                                className="dictionary__vocabluary__list__button">
+                                <span></span><span></span></button>{wordsForElem[i].eng.slice(0, 1).toUpperCase() + 
+                            wordsForElem[i].eng.slice(1)} - {wordsForElem[i].ukr};</li>
                         wordsList.push(elem)
             } 
             numberOfButtons = Math.ceil(wordsForElem.length / 25);
             
         } else if(choosenLetter === 'all'){
             
-            for(let i = wordsCount - 25; i < wordsCount; i++){
-                elem = <li key={words[i].id}>{words[i].id}. {words[i].eng.slice(0, 1).toUpperCase() + 
-                    words[i].eng.slice(1)} - {words[i].ukr}<button onClick={() => 
-                        addToLocalStorage(words[i].id, words[i].eng, words[i].ukr)}
-                         className="dictionary__vocabluary__list__button">
-                            <span></span><span></span></button></li>
+            for(let i = wordsCount - 25; i < (words.length - 1 > wordsCount ? wordsCount :
+                words.length); i++){
+                elem = <li key={words[i].id}><button onClick={() => {
+                    addToLocalStorage(words[i].id, words[i].eng, words[i].ukr)
+                    wordsFormation(setList, list)}}
+                     className="dictionary__vocabluary__list__button">
+                        <span></span><span></span></button>{words[i].id}. {words[i].eng.slice(0, 1).toUpperCase() + 
+                    words[i].eng.slice(1)} - {words[i].ukr};</li>
                 wordsList.push(elem)
             }
-            numberOfButtons = Math.floor(words.length / 25);
+            numberOfButtons = Math.ceil(words.length / 25);
+            console.log(numberOfButtons)
         } else if (choosenLetter === 'close'){
             setShow('none')
         }
@@ -98,7 +104,7 @@ export default function Vocab({ choosenLetter, wordsCount, setWordsCount, setSho
     )
 }
 
-const addToLocalStorage = (id, eng, ukr) => {
+export function addToLocalStorage(id, eng, ukr){
     let some = JSON.stringify({'id': id, 'eng': eng, 'ukr': ukr});
     localStorage.setItem(id, some);
 }

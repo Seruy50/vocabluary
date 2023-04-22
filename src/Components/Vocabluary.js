@@ -2,13 +2,15 @@ import {React, useState} from 'react'
 import {Translation} from './Dictionary/translation.js'
 import Vocab from './Dictionary/vocabluary.js'
 import MyWords from '../Components/myWords.js'
+import StartPage from './StartPage.js';
 
 
 
-export default function Vocabluary(){
+export default function Vocabluary({list, setList}){
   const [choosenLetter, setChoosenLetter] = useState('');
   const [wordsCount, setWordsCount] = useState(25);
   const [currentPage, setCurrentPage] = useState(1);
+
 
   let statuses = {
                     normal :{
@@ -77,8 +79,11 @@ export default function Vocabluary(){
             </tbody>
         </table>
 
+        console.log('main')
+
 
   return <div className="dictionary__mainPage">
+            <StartPage fame={'navigationBar'} add={'button'} training={'button'} vocabluary={'button'}/> 
             <div className="dictionary__mainForm">
                 <Translation />
                 <div className={alphabetPosition.mainForm}>
@@ -89,9 +94,13 @@ export default function Vocabluary(){
                            setWordsCount={setWordsCount}
                            currentPage={currentPage}
                            setCurrentPage={setCurrentPage}
-                           alphabetPosition={alphabetPosition}/>
+                           alphabetPosition={alphabetPosition}
+                           list={list}
+                           setList={setList}/>
                 </div>
-                <MyWords />
+                <MyWords list={list}
+                         setList={setList}
+                         />
             </div>
               
              

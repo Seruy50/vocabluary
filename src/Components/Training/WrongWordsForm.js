@@ -1,6 +1,8 @@
-import {React, useState} from 'react'
+import { React, useState } from 'react';
+import { addToLocalStorage } from '../Dictionary/vocabluary.js';
+import { wordsFormation } from '../myWords.js';
 
-export default function WrongWordsList({wrongWords, setWrongWords, setStart, setTrainStage}){
+export default function WrongWordsList({wrongWords, setWrongWords, setStart, setTrainStage, list, setList}){
     let mistakes = wrongWords.map((item, index) => {
         return <li  className="training__wordsFromList"
                     key={index}>
@@ -9,7 +11,14 @@ export default function WrongWordsList({wrongWords, setWrongWords, setStart, set
                                         () => setWrongWords(
                                                             wrongWords.filter(elem => item !== elem)
                                                             )
-                                        }><span /><span /></button>{item.eng}{' - '}{item.ukr.join(', ')}
+                                        }><span /><span /></button>
+                        <button onClick={() => {
+                                        addToLocalStorage(item.id, item.eng, item.ukr)
+                                        wordsFormation(setList, list)}}
+                                            className="dictionary__vocabluary__list__button list__button__training">
+                                            <span></span><span></span></button>
+                                    {item.eng}{' - '}{item.ukr.join(', ')}
+                        
         </li>
     })
 
@@ -24,15 +33,20 @@ export default function WrongWordsList({wrongWords, setWrongWords, setStart, set
         setTrainStage('english')
     } 
 
-    let list = (mistakes.length > 0 ? <><ul>{mistakes}</ul>
+    let listA = (mistakes.length > 0 ? <><ul>{mistakes}</ul>
                                         <div className="start__buttonStart">
                                             <button onClick={() => handleClick('firstTraining')}>Next</button>
                                         </div>
                                       </> 
                                     : 
                                       <>
-                                            <p>You know all the words from the list! Great! <br /> Or, maybe, you clicked on 'Results' button, 
-                                                without doing anything on previous page. In this case, you're asshole!</p>
+                                            <p className="training__knowAll">
+                                                You know all the words from the list! Great!
+                                            </p> 
+                                            <p className="training__cheater">
+                                                But, if you clicked on 'Results' button, 
+                                                without doing anything on previous page - you're asshole!
+                                            </p>
                                             <div className="start__buttonStart">
                                                 <button onClick={() => handleClick('begining')}>Back</button>
                                             </div>
@@ -42,7 +56,7 @@ export default function WrongWordsList({wrongWords, setWrongWords, setStart, set
 
     
     return <div className="training__form wrongWords">
-                {list}
+                {listA}
     </div>
     
 

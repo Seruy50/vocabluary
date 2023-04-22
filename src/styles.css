@@ -27,11 +27,11 @@
 
 /*App.js (main page)*/
 body{
-    background-color: rgb(213, 214, 212);
+    background-color: rgb(176, 209, 232);
 }
 
 .mainButtonsTemplate{
-    margin: 15% auto;
+    margin: 10% auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -40,6 +40,7 @@ body{
     padding: 4%;
     border: 10px double rgb(101, 103, 109);
     border-radius: 50px;
+    background-color: #d2c2c2;
     box-sizing: border-box;
 }
 
@@ -74,12 +75,7 @@ body{
 }
 
 .vocabluary:hover {
-    background-color: rgba(212, 222, 148, 0.7);
-}
-
-.vocabluary:active {
-    background-color: rgba(212, 222, 148, 0.7);
-    font-size: 25px;
+    background-color: #e8e3e3;
 }
 
 .chooseButtons:active {
@@ -126,15 +122,9 @@ body{
 
 /*Training.js start*/
 
-.training__main {
-    width: 100%;
-    min-height: 100vh;
-    border-top: 1px solid green;
-    background-color: rgba(132, 236, 100, 0.7);
-}   
+
 
 .training__form {
-    position: static;
     margin: 5% auto;
     display: flex;
     flex-direction: column;
@@ -221,9 +211,7 @@ body{
 
 /*TestField*/
 
-.page {
-    height: 100vh;
-}
+
 
 .training__question {
     display: flex;
@@ -301,11 +289,16 @@ body{
 .training__deleteItem{
     display: flex;
     position: relative;
-    margin-right: 15px;
+    margin-right: 40px;
     width: 15px;
     height: 15px;
     border: none;
     background-color: rgba(132, 236, 100, 0.7);
+}
+
+.list__button__training{
+    left: -5px;
+    top: -1px;
 }
 
 .training__deleteItem span:first-child {
@@ -328,7 +321,16 @@ body{
     background-color: red;
 }
 
+.training__knowAll{
+    text-align: center;
+    font: 35px/40px 'Magneto';
+}
 
+.training__cheater{
+    text-align: center;
+    color: red;
+    font: bold 20px/28px Georgia;
+}
 /*repeat section*/
 
 .training__fromTo__word{
@@ -377,20 +379,20 @@ body{
 .dictionary__mainPage {
     box-sizing: border-box;
     width: 100%;
-    height: 100vh;
-    background-color:  rgba(212, 222, 148, 0.7);
-    padding: 10px 0px 0px 10px;
-      
+    padding: 50px 0px 0px 10px;
+   
 }
 
 .dictionary__mainForm {
+    
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 50%;
     margin: 0 auto;
     box-sizing: border-box;
-    padding: 30px;    
+    padding: 0px 30px 30px 30px;    
+   
 }
 
 .dictionary__translationBar {
@@ -424,6 +426,7 @@ body{
     border-left: none;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 30px;
+    background-color: #e8e3e3;
 }
 
 .dictionary__wordsForTranslation__eng input {
@@ -431,7 +434,7 @@ body{
     height: 52px;
     border-top-left-radius: 30px;
     border-bottom-left-radius: 15px;
-    background-color: white;
+    background-color: rgb(215, 223, 222);
     font: 25px/30px times;
     text-align: center;
     box-sizing: border-box;
@@ -481,7 +484,7 @@ body{
 }
 
 .dictionary__wordsForTranslation__hints ul li:hover{
-    color: red;
+    color: blue;
     cursor: pointer;
  }
  
@@ -502,6 +505,7 @@ body{
 }
 
 .dictionary__alphabet{
+    background-color: rgb(215, 223, 222);
     margin-left: 15%;
     width: 70%;
     height: 300px;
@@ -516,7 +520,6 @@ body{
 .alphabet__active{
     width: 40%;
     margin-left: -10%;
-    transition: margin-left 0.5s, width 0.5s;
     border-right: none;
 }
 
@@ -530,12 +533,13 @@ body{
 
 .dictionary__alphabet td:hover{
     border: 2px solid green;
-    font: 30px/30px times;
-    background-color: white;
-    color: blue;
+    font: bold 30px/30px times;
+    background-color: #e8e3e3; 
+    color: rgb(3, 89, 151);
 }
 
 .dictionary__vocabluary__listHolder{
+    background-color: #e8e3e3 ;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -544,15 +548,19 @@ body{
     z-index: -1;
     opacity: 0;
     overflow: hidden;
-    width: 70.5%;
-    min-height: 322px;
+    width: 0.5%;
+    min-height: 350px;
+    max-height: 1vw;
     border: 5px double grey;
     box-sizing: border-box;
-    transition: width 0.5s, opacity 1s;
+    transition: width 0.5s;
     font: 22px/24px times;
+    border-radius: 0px 50px 50px 50px;
 }
 
 .listHolder__active{
+    width: 70.5%;
+    max-height: none;
     right: 0px;
     z-index: 2;
     opacity: 1;
@@ -569,16 +577,12 @@ body{
     position: absolute;
     width: 20px;
     height: 20px;
-    margin-left: 10px;
+    margin-left: -30px;
     margin-top: 2px;
 }
 
 .dictionary__vocabluary__list__button:hover {
-    background-color: green;
-}
-
-.dictionary__vocabluary__list__button:hover + span {
-    border: 2px solid yellow;
+    background-color: blue;
 }
 
 .dictionary__vocabluary__list__button span:first-child{
@@ -598,6 +602,10 @@ body{
     border: 2px solid black;
 }
 
+.list__button__training{
+    position: relative;
+}
+
 .dictionary__vocabluary__buttons{
     display: flex;
     flex-direction: row;
@@ -610,10 +618,18 @@ body{
     width: 25%;
     border: 2px double grey;
     border-radius: 5px;
-    background-color: #ede3c1;
+    background-color: #ebe9e1;
     height: 30px;
     font: 20px/25px "Magneto"
 }
+
+.dictionary__vocabluary__buttons button:hover{
+    background-color: #fff;
+}
+.dictionary__vocabluary__buttons button:active{
+    background-color: blue;
+}
+
 .dictionary__vocabluary__buttons button:first-child{
     width: 50%;
 }
@@ -638,26 +654,111 @@ body{
     display:none;
     position: absolute;
     right: 5px;
-    top: 100px;
-    width: 200px;
+    top: 150px;
+    width: 25%;
     height: 500px;
-    background-color: #fff;
+    overflow:auto;
+    border: 5px double grey;
+    border-radius: 50px;
+    background-color: #e8e3e3; 
+    z-index: 5;
 }
 
-.temporaryButton{
+.temporaryList li{
+    margin-bottom: 5px;
+}
+
+.temporary__deleteWord:hover{
+    color: red;
+    cursor: not-allowed;
+    font-size: 17px;
+}
+
+.temporary__buttons__section{
     position: absolute;
     right: 5px;
     top: 10px;
-    width: 50px;
-    height: 50px;
-    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.temporaryButton{
+    width: 70px;
+    height: 70px;
+    background-color: #d3e089;
+    border: 5px double rgb(106, 163, 78);
+    border-radius: 15px;
+    margin-bottom: 5px;
+    font: 18px/22px Georgia;
+    
 }
 
 .temporaryButtonClear{
-    position: absolute;
-    right: 5px;
-    top: 60px;
-    width: 50px;
-    height: 20px;
-    background-color: #fff;
+    width: 70px;
+    height: 40px;
+    background-color: #a62a2a;
+    border: 5px double rgb(233, 192, 192);
+    border-radius: 15px;
+    font: 18px/22px Georgia;
+    color: white;
 }
+
+.navigationBar{
+    border: 10px double rgb(101, 103, 109);
+    border-radius: 25px;
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100px;
+    height: 300px;
+    background-color: #d2c2c2;
+    
+}
+
+.navigationBar button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    padding: 0px;
+    width: 70px;
+    height: 70px;
+    border: 5px solid rgba(128, 128, 128, 0.2);
+    border-radius: 10%;
+    font-family: "Aboreto", cursive;
+    font-weight: bold;
+    font-size: 30px;
+    text-shadow: 3px 3px 3px gray;
+    box-shadow: 5px 5px 7px gray;
+}
+
+.navigationBar button:hover{
+    width: 80px;
+    height: 80px;
+    font-size: 40px;
+}
+
+.navigationBar button:active{
+    width: 75px;
+    height: 75px;
+}
+
+.navigationBar button:first-of-type{
+    background-color: rgba(145, 167, 213, 0.7);
+}
+
+.navigationBar button:nth-child(2){
+    background-color: rgba(132, 236, 113, 0.7);
+}
+.navigationBar button:last-of-type{
+    background-color: #e8e3e3 ;
+}
+
+
+
+
+

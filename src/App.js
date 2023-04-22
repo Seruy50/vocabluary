@@ -1,4 +1,4 @@
-import React from 'react'
+import {React, useState} from 'react'
 import "@fontsource/aboreto"
 import "@fontsource/annie-use-your-telescope"
 import  './styles.css'
@@ -11,14 +11,15 @@ import {HashRouter as Router, Routes, Route} from 'react-router-dom'
 
 
 export default function App(){
-
+  const [list, setList] = useState('');
+  const [fromMain, setFromMain] = useState(true);
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<StartPage/>}/>
+        <Route path="/" element={<StartPage fromMain={fromMain} setFromMain={setFromMain}/>}/>
         <Route path="/new-words" element={<AddWords />}/>
-        <Route path="/training" element={<Training />}/>
-        <Route path="/dictionary" element={<Vocabluary />}/>
+        <Route path="/training" element={<Training list={list} setList={setList} />}/>
+        <Route path="/dictionary" element={<Vocabluary list={list} setList={setList} />}/>
       </Routes>
     </Router>
   )
