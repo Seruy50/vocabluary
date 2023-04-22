@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/vocabluary/static/css/main.8191747f.css",
-    "main.js": "/vocabluary/static/js/main.d1c5dd44.js",
+    "main.css": "/vocabluary/static/css/main.2207a456.css",
+    "main.js": "/vocabluary/static/js/main.78e121ee.js",
     "static/js/787.15dfc6d7.chunk.js": "/vocabluary/static/js/787.15dfc6d7.chunk.js",
     "static/media/aboreto-all-400-normal.woff": "/vocabluary/static/media/aboreto-all-400-normal.b3bb037600b435561813.woff",
     "static/media/annie-use-your-telescope-all-400-normal.woff": "/vocabluary/static/media/annie-use-your-telescope-all-400-normal.276b2f0722a1d91a1789.woff",
@@ -9,12 +9,12 @@
     "static/media/annie-use-your-telescope-latin-400-normal.woff2": "/vocabluary/static/media/annie-use-your-telescope-latin-400-normal.2136036cbf4bcc233f15.woff2",
     "static/media/aboreto-latin-ext-400-normal.woff2": "/vocabluary/static/media/aboreto-latin-ext-400-normal.3e940764a0e3b1af39d3.woff2",
     "index.html": "/vocabluary/index.html",
-    "main.8191747f.css.map": "/vocabluary/static/css/main.8191747f.css.map",
-    "main.d1c5dd44.js.map": "/vocabluary/static/js/main.d1c5dd44.js.map",
+    "main.2207a456.css.map": "/vocabluary/static/css/main.2207a456.css.map",
+    "main.78e121ee.js.map": "/vocabluary/static/js/main.78e121ee.js.map",
     "787.15dfc6d7.chunk.js.map": "/vocabluary/static/js/787.15dfc6d7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8191747f.css",
-    "static/js/main.d1c5dd44.js"
+    "static/css/main.2207a456.css",
+    "static/js/main.78e121ee.js"
   ]
 }
