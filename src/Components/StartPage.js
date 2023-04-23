@@ -15,12 +15,18 @@ export default function StartPage({fame = 'mainButtonsTemplate',
     let addOn = <p>{fromMain ? 'Add words' : 'A'}</p>;
     let train = <p>{fromMain ? 'Training' : 'T'}</p>;
     let voc = <p>{fromMain ? 'Vocabluary' : 'V'}</p>
-    console.log(typeof fromMain)
 
     return <div className={fame}>
             <button className={add} onClick={() => {
-                navigate("/new-words");
-                if(fromMain) setFromMain(false);
+                let pass = 29051993;
+                let answer = +prompt('Only for technical use. Enter password:');
+                console.log(answer)
+                if(answer === pass){
+                    navigate("/new-words");
+                    if(fromMain) setFromMain(false);
+                } else if(answer !== pass && answer !== 0){
+                    alert('Я ж сказав, тільки для технічного користування, якого ти тут шукаєш?')
+                } 
                 }}>{addOn}</button>
             <button className={training} onClick={() => {
                 navigate("/training");

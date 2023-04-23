@@ -651,6 +651,7 @@ body{
 /*MyWordsButtons*/
 
 .temporaryList {
+    padding: 10px;
     display:none;
     position: absolute;
     right: 5px;

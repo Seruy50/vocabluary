@@ -102,7 +102,6 @@ export function wordsFromMyList(){
 
 function randomWords(setWordsList, countOfWords, startPosition, num){
     let words = +num === 1 ? allWords : wordsFromMyList();
-    console.log(words)
     let obj = [];
     let numbers = [];
     let start; 
@@ -127,18 +126,13 @@ function randomWords(setWordsList, countOfWords, startPosition, num){
             } 
             break;
         case true: 
-        console.log(startPosition - 1)
             start = startPosition;
             for(let i = start; i < +start + +countOfWords; i++){
                 obj.push(words[i - 1])
             }
-
-            console.log(start)
-            
-            console.log('yes')
             break;
         default :
-            console.log('nothing');
+            break;
     }
 
    

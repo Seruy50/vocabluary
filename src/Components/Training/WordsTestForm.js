@@ -7,7 +7,6 @@ function Input({wordEng, wordUkr, wordId, wrongWords, setWrongWords}){
     
     
     const isBlur = () => {
-        console.log(wordUkr, value)
         wordUkr = wordUkr.split(', ')
             if(value === wordUkr[0] || value === wordUkr[1] || value === wordUkr[2]) {
                 setAnswerCheck(true);
@@ -29,10 +28,6 @@ function Input({wordEng, wordUkr, wordId, wrongWords, setWrongWords}){
     let answerMarker = <span className={answerCheck ? "answerMark rightAnswer" : (answerCheck === false ? "answerMark wrongAnswer" : "answerMark")}></span>;
 
     const enter = (e) =>{
-        console.log(wordUkr)
-
-        
-        
         if(e.keyCode === 13 || e.keyCode === 9){
         
             wordUkr = wordUkr.split(', ')
@@ -43,8 +38,6 @@ function Input({wordEng, wordUkr, wordId, wrongWords, setWrongWords}){
                 setWrongWords([...wrongWords, {eng: wordEng, ukr: wordUkr, id: wordId}])
             }
         setDis(true);
-        }else if(e.keyCode !== 13 && e.keyCode !== 9){
-            console.log('ok')
         }
     }
     
@@ -56,7 +49,6 @@ function Input({wordEng, wordUkr, wordId, wrongWords, setWrongWords}){
 
 export default function WordsTestForm({ wrongWords, setWrongWords, wordsList, setStart, setWordsList }){
     let answerFields = wordsList.map((item, index) => {
-        console.log(item.eng)
         let word = <Input key={index} 
             wordEng={item.eng.slice(0, 1).toUpperCase() + item.eng.slice(1)} 
             wordUkr={item.ukr} 

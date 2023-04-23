@@ -29,14 +29,11 @@ export function wordsFormation(setList, list){
             arrayOfObject.push(JSON.parse(localStorage.getItem(item)))
     }}   
     let arrayWithTags = arrayOfObject.map(item => {
-            console.log(item)
         return <li key={item.id}><span className="temporary__deleteWord" onClick={() => {
-            deleteItemFromArray(item.id, setList, list)}}>{item.eng.slice(0, 1).toUpperCase() + item.eng.slice(1)}</span> - {item.ukr === 'object' ? item.ukr.join(', ') : item.ukr};</li>
+            deleteItemFromArray(item.id, setList, list)}}>{item.eng.slice(0, 1).toUpperCase() + item.eng.slice(1)}</span> - {typeof item.ukr === 'object' ? item.ukr.join(', ') : item.ukr};</li>
     })
     
-    console.log(list)
     setList([...arrayWithTags]);
-    console.log(list)
 }
 
 const clearMyWords = (setList, list) => {

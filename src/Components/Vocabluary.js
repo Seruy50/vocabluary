@@ -79,16 +79,14 @@ export default function Vocabluary({list, setList}){
             </tbody>
         </table>
 
-        console.log('main')
-
-
   return <div className="dictionary__mainPage">
             <StartPage fame={'navigationBar'} add={'button'} training={'button'} vocabluary={'button'}/> 
             <div className="dictionary__mainForm">
                 <Translation />
                 <div className={alphabetPosition.mainForm}>
                     {alphabet }
-                    <Vocab choosenLetter={choosenLetter} 
+                    <Vocab 
+                           choosenLetter={choosenLetter} 
                            setChoosenLetter={setChoosenLetter} 
                            wordsCount={wordsCount}
                            setWordsCount={setWordsCount}
@@ -96,13 +94,12 @@ export default function Vocabluary({list, setList}){
                            setCurrentPage={setCurrentPage}
                            alphabetPosition={alphabetPosition}
                            list={list}
-                           setList={setList}/>
+                           setList={setList}
+                    />
                 </div>
                 <MyWords list={list}
                          setList={setList}
-                         />
+                />
             </div>
-              
-             
-    </div>
+        </div>
 }
