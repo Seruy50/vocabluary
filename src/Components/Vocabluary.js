@@ -80,7 +80,7 @@ export default function Vocabluary({list, setList}){
         </table>
 
   return <div className="dictionary__mainPage">
-            <StartPage fame={'navigationBar'} add={'button'} training={'button'} vocabluary={'button'}/> 
+            <StartPage startPageMainBlockClass={'navigation__buttonsform__main__small'} /> 
             <div className="dictionary__mainForm">
                 <Translation />
                 <div className={alphabetPosition.mainForm}>

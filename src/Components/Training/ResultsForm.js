@@ -1,49 +1,44 @@
-import {React, useState} from 'react'
+import React from "react";
 
-export default function Results ({ 
-                                   count, 
-                                   mistakes,
-                                   trainStage,
-                                }){
+export default function Results({ mistakes, wrongWordsLength }) {
+  let message;
+  let wordsWithMistakes = randerWordsWithMistakes(mistakes);
+  let resultInPercents = ((wrongWordsLength / 5 - wordsWithMistakes.length) / wrongWordsLength / 5) * 100;
+  
 
-    let resultInPercents = (count[0] - mistakes[0]) / count[0] * 100;
-    let message;
-    let wordsWithMistakes = randerWordsWithMistakes(mistakes, trainStage);
-    
-    if(resultInPercents >= 80){
-        message = 'Great, go on, ultimate result!';
-    } else if(resultInPercents >= 60 && resultInPercents < 90 ){
-        message = 'Nice one, but you need to repeat next words: ';
-    } else {
-        message = 'Not the best result, really. Please, carefully next words: '
-    }
+  if (resultInPercents >= 80) {
+    message = "Great, go on, ultimate result!";
+  } else if (resultInPercents >= 50 && resultInPercents < 80) {
+    message = "Nice one, but you need to repeat next words: ";
+  } else {
+    message = "Not the best result, really. Please, carefully next words: ";
+  }
 
-    return <div className="training__results">
-        <p>{count[0] - mistakes[0] + '/' + count[0]}</p>
-        <p>{message}<i><b>{message[0] !== 'G' ? wordsWithMistakes + ';' : null}</b></i></p>
+  return (
+    <div className="training__results">
+      <p>{wrongWordsLength / 5 - wordsWithMistakes.length + "/" + wrongWordsLength / 5}</p>
+      <p>
+        {message}
+        <i>
+          <b>{message[0] !== "G" ? wordsWithMistakes.join(', ') + ";" : null}</b>
+        </i>
+      </p>
     </div>
+  );
 }
 
-function randerWordsWithMistakes( words, trainStage ){
-    let final = [];
+function randerWordsWithMistakes(words) {
+  let final = [];
 
-    words = words.slice(1);
-    
-    words.map(item => {
-        if(trainStage === 'english'){
-            if(!(final.includes(item.eng.slice(0, 1).toLowerCase() + item.eng.slice(1)))){
-                return final.push(item.eng.slice(0, 1).toLowerCase() + item.eng.slice(1));
-            }
-        } else {
-            item.ukr.map(item => {
-                if(!final.includes(item)){
-                    return final.push(item);
-                }
-            })
-        }
-    })
+  words = words.slice(1);
+  
+  let uniqueWords = new Set();
+  words.map(item => uniqueWords.add(item.eng));
 
-    final = final.join(', ')
+  for(let elem of uniqueWords.keys()){
+    elem = elem.slice(0, 1).toLowerCase() + elem.slice(1);
+    final.push(elem);
+  }
 
-    return final;
+  return final;
 }
