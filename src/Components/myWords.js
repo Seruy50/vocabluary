@@ -25,7 +25,7 @@ export function wordsFormation(setList, list){
     
     let arrayOfObject = [];
     for(let item in localStorage){
-        if(JSON.parse(localStorage.getItem(item))){
+        if(JSON.parse(localStorage.getItem(item)) && item !== 'deep'){
             arrayOfObject.push(JSON.parse(localStorage.getItem(item)))
     }}   
     let arrayWithTags = arrayOfObject.map(item => {

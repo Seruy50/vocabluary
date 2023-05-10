@@ -359,6 +359,14 @@ body {
   background-color: red;
 }
 
+.training__wordsCounter{
+  margin-bottom: 0px;
+  padding-top: 15px;
+  text-align: center;
+  font: 25px/25px "Magneto";
+  
+}
+
 .training__wordsFromList {
   display: flex;
   font: bold 20px/20px "Bookman Old Style";

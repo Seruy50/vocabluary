@@ -3,15 +3,16 @@ import React from "react";
 export default function Results({ mistakes, wrongWordsLength }) {
   let message;
   let wordsWithMistakes = randerWordsWithMistakes(mistakes);
-  let resultInPercents = ((wrongWordsLength / 5 - wordsWithMistakes.length) / wrongWordsLength / 5) * 100;
+  let resultInPercents = ((wrongWordsLength / 5 - wordsWithMistakes.length) / (wrongWordsLength / 5)) * 100;
+  console.log(resultInPercents)
   
 
-  if (resultInPercents >= 80) {
+  if (resultInPercents >= 90) {
     message = "Great, go on, ultimate result!";
-  } else if (resultInPercents >= 50 && resultInPercents < 80) {
+  } else if (resultInPercents >= 50 && resultInPercents < 90) {
     message = "Nice one, but you need to repeat next words: ";
   } else {
-    message = "Not the best result, really. Please, carefully next words: ";
+    message = "Not the best result, really. Please, pay special attention to the next words: ";
   }
 
   return (

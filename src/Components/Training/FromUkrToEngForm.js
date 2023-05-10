@@ -36,6 +36,7 @@ export default function FromUkrainianToEnglish({
       {count[0] === wrongWords.length ? (
         <Results  mistakes={mistakes} wrongWordsLength={wrongWords.length}/>
       ) : null}
+       <p className="training__wordsCounter" style={{display: count[0] + 1 > wrongWords.length ? 'none' : 'block'}}>{count[0] + 1 + '/' + wrongWords.length}</p>
       <div className="start__buttonStart">
         {count[0] === wrongWords.length ? (
           <button onClick={() => setStart("finish")}>Finish</button>
@@ -56,21 +57,25 @@ const changeWord = (
   setValue
 ) => {
   if (e.keyCode === 13 && count[1] !== 1) {
-    setCount([count[0], (count[1] = count[1] + 1)]);
     if (
       value ===
       wrongWords[count[0]].eng.slice(0, 1).toLowerCase() +
         wrongWords[count[0]].eng.slice(1)
     ) {
       className = className + " green";
-    } else {
+      setCount([count[0], (count[1] = count[1] + 1)]);
+    } else if (className !== "training__fromTo__input red"){
       className = className + " red";
       setMistakes([
         mistakes[0] + 1,
         ...mistakes.slice(1),
         wrongWords[count[0]],
       ]);
-    }
+    } else {
+      setCount([count[0], 0]);
+      className = "training__fromTo__input";
+      setValue("");
+    } 
   } else if (e.keyCode === 13 && count[1] === 1) {
     setCount([count[0] + 1, 0]);
     className = "training__fromTo__input";

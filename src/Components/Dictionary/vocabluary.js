@@ -38,7 +38,8 @@ export default function Vocab({
               addToLocalStorage(
                 wordsForElem[i].id,
                 wordsForElem[i].eng,
-                wordsForElem[i].ukr
+                wordsForElem[i].ukr,
+                list
               );
               wordsFormation(setList, list);
             }}
@@ -65,7 +66,7 @@ export default function Vocab({
         <li key={words[i].id}>
           <button
             onClick={() => {
-              addToLocalStorage(words[i].id, words[i].eng, words[i].ukr);
+              addToLocalStorage(words[i].id, words[i].eng, words[i].ukr, list);
               wordsFormation(setList, list);
             }}
             className="dictionary__vocabluary__list__button"
@@ -164,6 +165,7 @@ export default function Vocab({
               " in dictionary"}
         </ul>
         {buttonsRow()}
+        <button onClick={temporaryOneuse}></button>
       </div>
     </div>
   );
@@ -172,4 +174,32 @@ export default function Vocab({
 export function addToLocalStorage(id, eng, ukr) {
   let some = JSON.stringify({ id: id, eng: eng, ukr: ukr });
   localStorage.setItem(id, some);
+  addToDeepLocalStorage(id, eng, ukr)
+}
+
+function addToDeepLocalStorage(id, eng, ukr){
+  let readyForLocal = [];
+  if(localStorage.getItem('deep')){
+    let wordsFromLocal = JSON.parse(localStorage.getItem('deep'));
+    readyForLocal.push(...wordsFromLocal);
+    let isDouble = readyForLocal.map(item => item.id === id)
+    if(!isDouble.includes(true)){
+      readyForLocal.push({id: id, eng: eng, ukr: ukr})
+    };
+    localStorage.setItem('deep', JSON.stringify(readyForLocal));
+  } else {
+    readyForLocal.push({id: id, eng: eng, ukr: ukr});
+    localStorage.setItem('deep', JSON.stringify(readyForLocal));
+  }
+}
+
+function temporaryOneuse(){
+  let readyForLocal = [];
+  for(let i = 0; i < localStorage.length; i++){
+    readyForLocal.push(JSON.parse(localStorage.getItem(localStorage.key(i))))
+  }
+  console.log(readyForLocal);
+  localStorage.setItem('deep', JSON.stringify(readyForLocal))
+  console.log(localStorage)
+  console.log(localStorage.getItem('deep'))
 }
